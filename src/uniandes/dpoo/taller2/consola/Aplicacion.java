@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import uniandes.dpoo.taller2.modelo.Pedido;
 import uniandes.dpoo.taller2.modelo.Producto;
 import uniandes.dpoo.taller2.modelo.Restaurante;
 
@@ -118,6 +119,8 @@ public class Aplicacion
 		System.out.println("Ingrese la direccion del cliente");
 		BufferedReader entradaDireccion = new BufferedReader(new InputStreamReader(System.in));
 		String direccionCliente = entradaDireccion.readLine();
+		
+		restaurante.iniciarPedido(nombreCliente, direccionCliente);
 		while (continuarPedido)
 		{
 			System.out.println("///OPCIONES DE PRODUCTOS///");
@@ -136,6 +139,10 @@ public class Aplicacion
 			BufferedReader entradaProducto = new BufferedReader(new InputStreamReader(System.in));
 			String entradaProductoStr = entradaProducto.readLine();
 			int producto = Integer.parseInt(entradaProductoStr);
+			restaurante.agregarProducto(producto);
+			
+			
+			
 
 		}
 	}

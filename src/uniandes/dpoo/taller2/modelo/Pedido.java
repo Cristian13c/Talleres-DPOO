@@ -10,7 +10,7 @@ public class Pedido
 	private int idPedido;
 	private String nombreCliente;
 	private String direccionCliente;
-	private ArrayList<Producto> itemsPedido;
+	private ArrayList<Producto> itemsPedido = new ArrayList<Producto>();
 	
 	// Constructor
 	public Pedido(String nombreCliente, String direccionCliente)
@@ -30,7 +30,7 @@ public class Pedido
 	
 	public void agregarProducto(Producto nuevoItem)
 	{
-		
+		itemsPedido.add(nuevoItem);
 	}
 	
 	private int getPrecioNetoPedido()

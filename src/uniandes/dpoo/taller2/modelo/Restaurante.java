@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Restaurante
 {
- 
+
 	// Atributos
 	private ArrayList<Combo> combos;
 	private ArrayList<Producto> menuBase;
@@ -30,7 +30,7 @@ public class Restaurante
 	{
 		Pedido pedido = new Pedido(nombreCliente, direccionCliente);
 		this.pedidoEnCurso = pedido;
-		
+
 	}
 
 	public void cerrarYGuardarPedido()
@@ -42,6 +42,11 @@ public class Restaurante
 	{
 
 		return pedidoEnCurso;
+	}
+	
+	public void agregarProducto(int numeroProducto)
+	{
+		pedidoEnCurso.agregarProducto(menuBase.get(numeroProducto));
 	}
 
 	public ArrayList<Producto> getMenuBase()
@@ -55,10 +60,10 @@ public class Restaurante
 
 		return ingredientes;
 	}
-	
+
 	public ArrayList<Combo> getCombos()
 	{
-		
+
 		return combos;
 	}
 
@@ -128,7 +133,14 @@ public class Restaurante
 			String descuentoStr = informacion[1].replace("%", "");
 			double descuento = Double.parseDouble(descuentoStr);
 			Combo combo = new Combo(descuento, nombre);
+			/*for (int i = 3; i <= informacion.length; i++) 
+			{
+				ProductoMenu productoMenu = menuBase.
+				combo.agregarItemACombo(productoMenu);
+			}
+			*/
 			combos.add(combo);
+			
 		}
 		
 		br.close();
