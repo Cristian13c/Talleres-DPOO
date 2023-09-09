@@ -1,14 +1,25 @@
 package uniandes.dpoo.taller2.modelo;
 
+import java.util.ArrayList;
+
 public class ProductoAjustado implements Producto
 {
 	// Atributos
 	ProductoMenu base;
+	ArrayList<Ingrediente> agregados = new ArrayList<Ingrediente>();
+	ArrayList<Ingrediente> eliminados = new ArrayList<Ingrediente>();
+	
 
 	// Constructor
 	public ProductoAjustado(ProductoMenu base)
 	{
 		this.base = base;
+	}
+	
+	// Metodos
+	public void agregarOEliminarIngrediente(Ingrediente ingrediente)
+	{
+		
 	}
 
 	@Override

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Pedido
 {
 	// Atributos
-	private int numeroPedido;
+	static private int numeroPedidos;
 	private int idPedido;
 	private String nombreCliente;
 	private String direccionCliente;
@@ -19,6 +19,7 @@ public class Pedido
 		this.direccionCliente = direccionCliente;
 		String codigo = nombreCliente + direccionCliente;
 		idPedido = codigo.hashCode();
+		numeroPedidos ++;
 		
 	}
 	

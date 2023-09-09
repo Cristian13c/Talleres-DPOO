@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Restaurante
 {
@@ -15,6 +16,7 @@ public class Restaurante
 	private ArrayList<Ingrediente> ingredientes;
 	private Pedido pedidoEnCurso;
 	private ArrayList<Pedido> pedidos;
+	private HashMap<String, ProductoMenu> tablaHashMenu = new HashMap<String, ProductoMenu>();
 
 	// Constructor
 	public Restaurante()
@@ -42,11 +44,6 @@ public class Restaurante
 	{
 
 		return pedidoEnCurso;
-	}
-	
-	public void agregarProducto(int numeroProducto)
-	{
-		pedidoEnCurso.agregarProducto(menuBase.get(numeroProducto));
 	}
 
 	public ArrayList<Producto> getMenuBase()
@@ -112,6 +109,8 @@ public class Restaurante
 			int precioBase = Integer.valueOf(informacion[1]);
 			ProductoMenu productoMenu = new ProductoMenu(nombre, precioBase);
 			menuBase.add(productoMenu);
+			tablaHashMenu.put(nombre, productoMenu);
+
 		}
 
 		br.close();
@@ -122,27 +121,45 @@ public class Restaurante
 		// Carga los combos
 		FileReader fr = new FileReader(archivoCombos);
 		BufferedReader br = new BufferedReader(fr);
-		
+
 		String linea;
-		
-		while ((linea = br.readLine())!= null)
+
+		while ((linea = br.readLine()) != null)
 		{
-			
+
 			String[] informacion = linea.split(";");
 			String nombre = informacion[0];
 			String descuentoStr = informacion[1].replace("%", "");
 			double descuento = Double.parseDouble(descuentoStr);
 			Combo combo = new Combo(descuento, nombre);
-			/*for (int i = 3; i <= informacion.length; i++) 
+
+			int i = 2;
+
+			while (i < informacion.length)
 			{
-				ProductoMenu productoMenu = menuBase.
+				ProductoMenu productoMenu = tablaHashMenu.get(informacion[i]);
 				combo.agregarItemACombo(productoMenu);
+
+				i++;
+
 			}
-			*/
+
 			combos.add(combo);
-			
+
 		}
-		
+
 		br.close();
+	}
+
+	public void agregarProducto(int numeroProducto, int opcion)
+	{
+		if (opcion == 1)
+		{
+			pedidoEnCurso.agregarProducto(menuBase.get(numeroProducto));
+		} else if (opcion == 2)
+		{
+			pedidoEnCurso.agregarProducto(combos.get(numeroProducto));
+		}
+
 	}
 }
