@@ -54,7 +54,10 @@ public class Pedido
 	
 	private String generarTextoFactura()
 	{
-		
+		for(Producto producto:itemsPedido)
+		{
+			
+		}
 		return null;
 	}
 	

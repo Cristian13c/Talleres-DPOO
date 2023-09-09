@@ -65,8 +65,8 @@ public class Aplicacion
 				iniciarNuevoPedido();
 			else if (opcionSeleccionada == 3)
 				agregarElementoPedido();
-			// else if (opcionSeleccionada == 4 && calculadora != null)
-
+			else if (opcionSeleccionada == 4)
+				restaurante.cerrarYGuardarPedido();
 			// else if (opcionSeleccionada == 5 && calculadora != null)
 
 		} catch (NumberFormatException e)
@@ -213,5 +213,6 @@ public class Aplicacion
 
 		}
 	}
-
+		
+		
 }
